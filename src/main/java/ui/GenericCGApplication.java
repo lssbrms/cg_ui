@@ -1,7 +1,5 @@
 package ui;
 
-import base.ModelViewer;
-import base.ParameterEditor;
 import com.google.common.base.Preconditions;
 
 import javax.swing.*;
@@ -115,7 +113,7 @@ public class GenericCGApplication extends JFrame {
   /**
    * Add editors and viewers
    */
-  public void setup(ParameterEditor modelEditor, ModelViewer modelViewer,
+  public void setup(ui.ParameterEditor modelEditor, ui.ModelViewer modelViewer,
                     Scene3D sceneViewer) {
     if (modelEditor != null) {
       addPanel(modelEditor, "Model Editor");
