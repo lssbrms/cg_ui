@@ -1,6 +1,6 @@
 package ui;
 
-import datastructures.AxisAlignedBoundingBox;
+import misc.AxisAlignedBoundingBox;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 

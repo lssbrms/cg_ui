@@ -5,7 +5,7 @@
 
 package ui;
 
-import datastructures.shape3d.Ray3D;
+import shape3d.Ray3D;
 import com.jme3.asset.AssetManager;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;

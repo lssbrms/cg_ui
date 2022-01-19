@@ -1,10 +1,10 @@
 package ui;
 
-import datastructures.AxisAlignedBoundingBox;
-import math.MathF;
 import com.jme3.math.Matrix3f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
+import math.MathF;
+import misc.AxisAlignedBoundingBox;
 
 /**
  * This camera controller enables the used to rotate the camera around the scene und move closer and further away.
