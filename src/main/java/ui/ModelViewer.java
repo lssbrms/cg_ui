@@ -1,7 +1,6 @@
 package ui;
 
 import misc.Observer;
-import base.Model;
 
 import javax.swing.*;
 import java.awt.*;

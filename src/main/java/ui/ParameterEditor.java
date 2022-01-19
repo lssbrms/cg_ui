@@ -1,7 +1,5 @@
 package ui;
 
-import base.Parameters;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
