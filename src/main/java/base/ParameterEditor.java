@@ -1,6 +1,6 @@
-package ui;
+package base;
 
-import base.Parameters;
+import ui.StatusBar;
 
 import javax.swing.*;
 import java.util.ArrayList;
