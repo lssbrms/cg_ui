@@ -1,5 +1,7 @@
 package ui;
 
+import base.ModelViewer;
+import base.ParameterEditor;
 import com.google.common.base.Preconditions;
 
 import javax.swing.*;

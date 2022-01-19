@@ -1,7 +1,7 @@
-package ui;
+package base;
 
 import misc.Observer;
-import base.Model;
+import ui.StatusBar;
 
 import javax.swing.*;
 import java.awt.*;
