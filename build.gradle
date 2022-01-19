@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'antlr'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://mvnrepository.com/artifact/org.jmonkeyengine"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'cg_math/src/main/java'
+        }
+        resources {
+            srcDir 'cg_math/src/main/resources'
+        }
+    }
+
+    test {
+        java {
+            srcDirs 'cg_math/src/test/java'
+        }
+    }
+}
+
+def jme3 = [v: '3.4.0-stable', g: 'org.jmonkeyengine']
+
+dependencies {
+    antlr 'org.antlr:antlr4:4.9.3'
+
+    // JME
+    implementation "${jme3.g}:jme3-core:${jme3.v}"
+    implementation "${jme3.g}:jme3-effects:${jme3.v}"
+    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
+    runtimeOnly "${jme3.g}:jme3-plugins:${jme3.v}"
+    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
+
+    // Utils
+    implementation 'org.apache.commons:commons-lang3:3.12.0'              // general
+    implementation 'com.google.guava:guava:31.0.1-jre'                    // general
+    implementation 'org.reflections:reflections:0.10.2'                   // reflection
+    implementation 'org.jetbrains:annotations:22.0.0'                     // static analysis
+    implementation 'org.antlr:antlr4:4.9.3'                               // parser generator
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'   // JSON data binding
+    implementation 'org.json:json:20210307'
+
+    // Testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+
+    // CSG modeling
+    implementation files('libs/WCOmoCSG321-b20191021-j17.jar')
+    runtimeOnly files('libs/WCOmoCSGjme321-b20191021-j17-trimmed.jar')
+}
+
+// configure ANTLR tool
+generateGrammarSource {
+    arguments += ['-visitor']   // generate visitor base classes
+}
+
+// show details about warnings in compilation console output
+tasks.withType(JavaCompile) {
+    options.deprecation = true
+    options.compilerArgs += ["-Xlint:unchecked"]
+}

@@ -1,0 +1,15 @@
+.DS_Store
+.gradle/
+.idea/
+gradle/
+build/
+gradlew
+gradlew.bat
+*.dylib
+libopenal.dylib
+out
+liblwjgl64.so
+libopenal64.so
+lwjgl64.dll
+OpenAL64.dll
+*.blend[1-9]

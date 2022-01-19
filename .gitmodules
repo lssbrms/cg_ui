@@ -1,0 +1,3 @@
+[submodule "cg_math"]
+	path = cg_math
+	url = https://git.haw-hamburg.de/abo781/cg_math.git
