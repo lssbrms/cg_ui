@@ -3,7 +3,7 @@
  * an der Hochschule für Angewandte Wissenschaften Hamburg von Prof. Philipp Jenke (Informatik)
  */
 
-package lecture_demos.base.sprites;
+package sprites;
 
 /**
  * Constants used for the sprite rendering

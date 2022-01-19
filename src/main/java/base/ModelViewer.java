@@ -1,6 +1,7 @@
 package base;
 
 import base.Model;
+import misc.Observable;
 import misc.Observer;
 import ui.StatusBar;
 
@@ -29,7 +30,7 @@ public abstract class ModelViewer extends JPanel implements Observer {
    * Override this method to get informed if the model changed.
    */
   @Override
-  public void update() {
+  public void update(Observable sender, String descr, Object payload) {
   }
 
   public Model getModel() {
