@@ -5,6 +5,13 @@
 
 package ui;
 
+import com.jme3.light.AmbientLight;
+import com.jme3.light.DirectionalLight;
+import com.jme3.light.PointLight;
+import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
+import com.jme3.renderer.ViewPort;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 import misc.Observable;
 import shape3d.Ray3D;
 import com.jme3.asset.AssetManager;
@@ -111,7 +118,21 @@ public abstract class Scene3D {
     // Default: ignore
   }
 
-  public void setupLights(Node rootNode) {
+  /**
+   * This is the default lighting - can be altered in inheriting scene classes.
+   */
+  public void setupLights(Node rootNode, ViewPort viewPort) {
+    // Sun
+    DirectionalLight sun = new DirectionalLight();
+    sun.setColor(new ColorRGBA(1, 1, 1, 1));
+    sun.setDirection(new Vector3f(0.25f, -1, 0.1f));
+    rootNode.addLight(sun);
+
+    AmbientLight ambientLight = new AmbientLight();
+    //ColorRGBA darkAmbientColor = new ColorRGBA(0.25f, 0.25f, 0.25f, 1);
+    ColorRGBA brightAmbientColor = ColorRGBA.White;
+    ambientLight.setColor(brightAmbientColor);
+    rootNode.addLight(ambientLight);
   }
 
   /**

@@ -70,7 +70,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
       rootNode.detachAllChildren();
       scene.provideJMEApp(this);
       scene.init(assetManager, rootNode, cameraController);
-      scene.setupLights(rootNode);
+      scene.setupLights(rootNode, viewPort);
       viewPort.setBackgroundColor(ColorRGBA.White);
       this.scene = scene;
       System.err.println("scene replaced");
@@ -85,44 +85,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
     setDisplayFps(false);
     setDisplayStatView(false);
 
-    setupLights(assetManager, rootNode, viewPort);
     viewPort.setBackgroundColor(ColorRGBA.White);
-  }
-
-  /**
-   * The light setup is done in this method. It is called once at the beginning.
-   */
-  public void setupLights(AssetManager assetManager, Node rootNode, ViewPort viewPort) {
-    // Sun
-    DirectionalLight sun = new DirectionalLight();
-    sun.setColor(new ColorRGBA(0.5f, 0.5f, 0.5f, 1));
-    sun.setDirection(new Vector3f(0.25f, -1, 0.1f));
-    rootNode.addLight(sun);
-
-    // Shadows
-    final int SHADOWMAP_SIZE = 2048;
-    DirectionalLightShadowRenderer plsr = new DirectionalLightShadowRenderer(assetManager, SHADOWMAP_SIZE, 4);
-    plsr.setLight(sun);
-    viewPort.addProcessor(plsr);
-
-    AmbientLight ambientLight = new AmbientLight();
-    ColorRGBA darkAmbientColor = new ColorRGBA(0.25f, 0.25f, 0.25f, 1);
-    ColorRGBA brightAmbientColor = ColorRGBA.White;
-    ambientLight.setColor(brightAmbientColor);
-    rootNode.addLight(ambientLight);
-
-    int numLights = 3;
-    float dist = 5.0f;
-    for (int i = 0; i < numLights; i++) {
-      float angle = (float) i / (float) numLights * (float) Math.PI * 2.0f;
-      float x = (float) Math.sin(angle) * dist;
-      float z = (float) Math.cos(angle) * dist;
-
-      PointLight light1 = new PointLight();
-      light1.setPosition(new Vector3f(x, 1, z));
-      light1.setColor(ColorRGBA.LightGray.mult(1.0f / numLights));
-      rootNode.addLight(light1);
-    }
   }
 
   /**
