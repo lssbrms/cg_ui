@@ -56,13 +56,14 @@ public class GenericCGApplication extends JFrame {
     defaultJMonkeyContent.replaceScene(scene3D);
     if (!defaultContentIsInUse) {
       // Default currently unused.
-      mainTabbedPane.add(defaultJMonkeyContent.getTitle(), defaultJMonkeyContent);
+      mainTabbedPane.add(scene3D.getTitle(), defaultJMonkeyContent);
       defaultContentIsInUse = true;
     }
     getContentPane().invalidate();
   }
 
   protected void addScene3D(Scene3D scene3D) {
+    Preconditions.checkNotNull(scene3D);
     if (!defaultContentIsInUse) {
       // Reuse default content scene
       defaultJMonkeyContent.replaceScene(scene3D);

@@ -73,6 +73,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
       scene.setupLights(rootNode);
       viewPort.setBackgroundColor(ColorRGBA.White);
       this.scene = scene;
+      System.err.println("scene replaced");
     };
   }
 
