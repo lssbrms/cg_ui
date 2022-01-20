@@ -1,6 +1,10 @@
+/**
+ * This file is part of the computer graphics project of the computer graphics group led by
+ * Prof. Dr. Philipp Jenke at the University of Applied Sciences (HAW) in Hamburg.
+ */
+
 package base;
 
-import base.Model;
 import misc.Observable;
 import misc.Observer;
 import ui.StatusBar;
@@ -9,7 +13,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Base viewer class for the viewers of the abstract model representation.

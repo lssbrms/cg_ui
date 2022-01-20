@@ -1,3 +1,8 @@
+/**
+ * This file is part of the computer graphics project of the computer graphics group led by
+ * Prof. Dr. Philipp Jenke at the University of Applied Sciences (HAW) in Hamburg.
+ */
+
 package ui;
 
 import base.ModelViewer;
