@@ -33,6 +33,7 @@ public class JMonkeyContent extends JPanel {
 
   private void initJMonkey(int width, int height) {
     AppSettings settings = new AppSettings(true);
+    settings.setAudioRenderer(null);
     settings.setWidth(width);
     settings.setHeight(height);
     settings.setCustomRenderer(AwtPanelsContext.class);
