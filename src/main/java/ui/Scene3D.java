@@ -5,6 +5,7 @@
 
 package ui;
 
+import misc.Observable;
 import shape3d.Ray3D;
 import com.jme3.asset.AssetManager;
 import com.jme3.math.Ray;
