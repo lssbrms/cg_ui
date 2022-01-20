@@ -19,7 +19,7 @@ public class TestScene3D extends Scene3D {
     Mesh mesh = new Box(new Vector3f(-0.5f, -0.5f, -0.5f), new Vector3f(0.5f, 0.5f, 0.5f));
     Geometry geometry = new Geometry("Mesh", mesh);
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-    mat.setTexture("ColorMap", assetManager.loadTexture("textures/grass.jpg"));
+    mat.setTexture("ColorMap", assetManager.loadTexture("textures/sweets.jpg"));
     geometry.setMaterial(mat);
     rootNode.attachChild(geometry);
     AxisAlignedBoundingBox bbox = new AxisAlignedBoundingBox();
