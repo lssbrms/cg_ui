@@ -1,9 +1,9 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  
 stages:
   - build-and-test
   - unit-tests
-
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
 
 build-job:
   stage: build-and-test
