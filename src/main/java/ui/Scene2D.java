@@ -78,7 +78,11 @@ public abstract class Scene2D extends JPanel {
     gc.drawLine((int) a_.x, (int) a_.y, (int) b_.x, (int) b_.y);
   }
 
-  protected void drawPoly(Graphics gc, List<Vector2f> poly, Color color) {
+  protected void drawPoly(Graphics gc, List<Vector2f> poly, Color lineColor) {
+    drawPoly(gc, poly, lineColor, null);
+  }
+
+  protected void drawPoly(Graphics gc, List<Vector2f> poly, Color lineColor, Color fillColor) {
     int[] xPoints = new int[poly.size()];
     int[] yPoints = new int[poly.size()];
     for (int i = 0; i < poly.size(); i++) {
@@ -87,8 +91,15 @@ public abstract class Scene2D extends JPanel {
       yPoints[i] = (int) p_.y;
     }
 
-    gc.setColor(color);
-    gc.fillPolygon(xPoints, yPoints, poly.size());
+    // Fill
+    if (fillColor != null) {
+      gc.setColor(fillColor);
+      gc.fillPolygon(xPoints, yPoints, poly.size());
+    }
+
+    // Outline
+    gc.setColor(lineColor);
+    gc.drawPolygon(xPoints, yPoints, poly.size());
   }
 
   /**
