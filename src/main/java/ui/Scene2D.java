@@ -8,6 +8,7 @@ import com.jme3.math.Vector2f;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.CubicCurve2D;
 import java.util.List;
 
 /**
@@ -82,6 +83,20 @@ public abstract class Scene2D extends JPanel {
     drawPoly(gc, poly, lineColor, null);
   }
 
+  /**
+   * Draw a cubic curve using the given control points.
+   */
+  protected void drawCubicCurve(Graphics2D gc, Vector2f c0, Vector2f c1, Vector2f c2, Vector2f c3, Color color) {
+    CubicCurve2D curveShape = new CubicCurve2D.Float();
+    c0 = world2Pixel(c0);
+    c1 = world2Pixel(c1);
+    c2 = world2Pixel(c2);
+    c3 = world2Pixel(c3);
+    curveShape.setCurve(c0.x, c0.y, c1.x, c1.y, c2.x, c2.y, c3.x, c3.y);
+    gc.setColor(color);
+    gc.draw(curveShape);
+  }
+
   protected void drawPoly(Graphics gc, List<Vector2f> poly, Color lineColor, Color fillColor) {
     int[] xPoints = new int[poly.size()];
     int[] yPoints = new int[poly.size()];
@@ -98,8 +113,10 @@ public abstract class Scene2D extends JPanel {
     }
 
     // Outline
-    gc.setColor(lineColor);
-    gc.drawPolygon(xPoints, yPoints, poly.size());
+    if (lineColor != null) {
+      gc.setColor(lineColor);
+      gc.drawPolygon(xPoints, yPoints, poly.size());
+    }
   }
 
   /**
