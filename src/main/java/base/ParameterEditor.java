@@ -10,11 +10,17 @@ import ui.StatusBar;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * This is the base class for the editor of the parameter input for the pcg system.
  */
 public abstract class ParameterEditor extends JPanel {
+
+  /**
+   * Can be used to send a message to the status bar.
+   */
+  private Consumer<String> statusBarNotifier;
 
   /**
    * Input parameters to the system
@@ -34,5 +40,16 @@ public abstract class ParameterEditor extends JPanel {
    */
   public List<StatusBar.StatusBarItem> getStatusBarItems() {
     return new ArrayList<>();
+  }
+
+  public void setStatusBarNotifier(Consumer<String> statusbarNotifier) {
+    this.statusBarNotifier = statusbarNotifier;
+  }
+
+  public void statusBarMessage(String msg) {
+    if (statusBarNotifier == null) {
+      return;
+    }
+    statusBarNotifier.accept(msg);
   }
 }

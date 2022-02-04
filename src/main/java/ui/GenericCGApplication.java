@@ -8,6 +8,7 @@ package ui;
 import base.ModelViewer;
 import base.ParameterEditor;
 import com.google.common.base.Preconditions;
+import misc.Observer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -65,6 +66,9 @@ public class GenericCGApplication extends JFrame {
       defaultContentIsInUse = true;
     }
     getContentPane().invalidate();
+    for (StatusBar.StatusBarItem statusBarItem : scene3D.getStatusBarItems()) {
+      statusBar.add(statusBarItem);
+    }
   }
 
   protected void addScene3D(Scene3D scene3D) {
@@ -110,6 +114,18 @@ public class GenericCGApplication extends JFrame {
   protected void addPanel(JPanel panel, String titel) {
     mainTabbedPane.add(titel, panel);
     getContentPane().invalidate();
+    if (panel instanceof ParameterEditor) {
+      ParameterEditor parameterEditor = (ParameterEditor) panel;
+      for (StatusBar.StatusBarItem statusBarItem : parameterEditor.getStatusBarItems()) {
+        statusBar.add(statusBarItem);
+      }
+      parameterEditor.setStatusBarNotifier(text -> statusBar.addMessage(text));
+    } else if (panel instanceof ModelViewer) {
+      ModelViewer modelViewer = (ModelViewer) panel;
+      for (StatusBar.StatusBarItem statusBarItem : modelViewer.getStatusBarItems()) {
+        statusBar.add(statusBarItem);
+      }
+    }
   }
 
   protected void removeAllScenes() {
@@ -121,25 +137,20 @@ public class GenericCGApplication extends JFrame {
   /**
    * Add editors and viewers
    */
-  public void setup(ParameterEditor modelEditor, ModelViewer modelViewer,
+  public void setup(ParameterEditor parameterEditor, ModelViewer modelViewer,
                     Scene3D sceneViewer) {
-    if (modelEditor != null) {
-      addPanel(modelEditor, "Model Editor");
-      for (StatusBar.StatusBarItem statusBarItem : modelEditor.getStatusBarItems()) {
-        statusBar.add(statusBarItem);
-      }
+    if (parameterEditor != null) {
+      addPanel(parameterEditor, "Model Editor");
     }
     if (modelViewer != null) {
       addPanel(modelViewer, "Model Viewer");
-      for (StatusBar.StatusBarItem statusBarItem : modelViewer.getStatusBarItems()) {
-        statusBar.add(statusBarItem);
-      }
     }
     if (sceneViewer != null) {
       setScene3D(sceneViewer);
-      for (StatusBar.StatusBarItem statusBarItem : sceneViewer.getStatusBarItems()) {
-        statusBar.add(statusBarItem);
-      }
     }
+  }
+
+  protected StatusBar getStatusBar() {
+    return statusBar;
   }
 }
