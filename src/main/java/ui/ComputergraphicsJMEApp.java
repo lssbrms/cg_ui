@@ -62,6 +62,8 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
 
   private Runnable jMonkeyTask;
 
+  private ColorRGBA backgroundColor = ColorRGBA.LightGray;
+
   public ComputergraphicsJMEApp() {
   }
 
@@ -71,7 +73,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
       scene.provideJMEApp(this);
       scene.init(assetManager, rootNode, cameraController);
       scene.setupLights(rootNode, viewPort);
-      viewPort.setBackgroundColor(ColorRGBA.White);
+      viewPort.setBackgroundColor(backgroundColor);
       this.scene = scene;
       System.err.println("scene replaced");
     };
@@ -85,7 +87,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
     setDisplayFps(false);
     setDisplayStatView(false);
 
-    viewPort.setBackgroundColor(ColorRGBA.White);
+    viewPort.setBackgroundColor(backgroundColor);
   }
 
   /**
@@ -97,7 +99,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
     stateManager.detach(stateManager.getState(FlyCamAppState.class));
     cameraController = new ObserverCameraController(cam);
     cameraController.lookAt(new Vector3f(0, 1, 0), new Vector3f(0, 1, 0));
-    viewPort.setBackgroundColor(ColorRGBA.LightGray);
+    viewPort.setBackgroundColor(backgroundColor);
     inputManager.addMapping(MOUSE_MOVE_RIGHT, new MouseAxisTrigger(MouseInput.AXIS_X, true));
     inputManager.addMapping(MOUSE_MOVE_LEFT, new MouseAxisTrigger(MouseInput.AXIS_X, false));
     inputManager.addMapping(MOUSE_MOVE_UP, new MouseAxisTrigger(MouseInput.AXIS_Y, true));
