@@ -2,17 +2,13 @@
  * This file is part of the computer graphics project of the computer graphics group led by
  * Prof. Dr. Philipp Jenke at the University of Applied Sciences (HAW) in Hamburg.
  */
-
 package ui;
 
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
-import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.ViewPort;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
-import misc.Observable;
 import shape3d.Ray3D;
 import com.jme3.asset.AssetManager;
 import com.jme3.math.Ray;
