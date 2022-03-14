@@ -8,6 +8,9 @@ stages:
 build-job:
   stage: build-and-test
   image: openjdk:14-jdk-slim
+  tags:
+    - dind
+
   script:
     - chmod +x ./gradlew
     - ./gradlew build
@@ -15,6 +18,9 @@ build-job:
 unit-testing-job:
   stage: unit-tests
   image: openjdk:14-jdk-slim
+  tags:
+    - dind
+
   script:
     - chmod +x ./gradlew
     - export JAVA_HOME="/usr/local/openjdk-14"
