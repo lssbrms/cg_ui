@@ -133,14 +133,14 @@ public abstract class Scene3D {
 
     // Sun
     DirectionalLight sun = new DirectionalLight();
-    sun.setColor(new ColorRGBA(1, 1, 1, 1));
+    sun.setColor(new ColorRGBA(0.8f, 0.8f, 0.8f, 1));
     sun.setDirection(new Vector3f(0.25f, -1, 0.1f));
     rootNode.addLight(sun);
 
     AmbientLight ambientLight = new AmbientLight();
-    //ColorRGBA darkAmbientColor = new ColorRGBA(0.25f, 0.25f, 0.25f, 1);
-    ColorRGBA brightAmbientColor = ColorRGBA.White;
-    ambientLight.setColor(brightAmbientColor);
+    ColorRGBA darkAmbientColor = new ColorRGBA(0.25f, 0.25f, 0.25f, 1);
+    //ColorRGBA brightAmbientColor = ColorRGBA.White;
+    ambientLight.setColor(darkAmbientColor);
     rootNode.addLight(ambientLight);
   }
 
