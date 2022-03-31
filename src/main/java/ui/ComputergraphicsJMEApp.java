@@ -5,24 +5,18 @@
 
 package ui;
 
+import com.jme3.system.AppSettings;
 import shape3d.Ray3D;
 import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
-import com.jme3.asset.AssetManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.*;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Node;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
 
 /**
  * This is the main application which is used for all exercises. Only adjust the
@@ -65,6 +59,15 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
   private ColorRGBA backgroundColor = ColorRGBA.LightGray;
 
   public ComputergraphicsJMEApp() {
+    setShowSettings(false);
+    setPauseOnLostFocus(false);
+    AppSettings setting = new AppSettings(true);
+    setting.setAudioRenderer(null);
+    setting.setFullscreen(false);
+    setting.setFrameRate(60);
+    setting.setVSync(true);
+    setting.setTitle("HAW Hamburg Computer Graphics");
+    setSettings(setting);
   }
 
   public void replaceScene(Scene3D scene) {

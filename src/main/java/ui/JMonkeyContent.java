@@ -13,15 +13,15 @@ import com.jme3.system.awt.PaintMode;
 import javax.swing.*;
 import java.awt.*;
 
-public class JMonkeyContent extends JPanel {
+public class JMonkeyContent /*extends JPanel*/ {
   private AwtPanel jmonkeyPanel;
   private static ComputergraphicsJMEApp app;
   private JPanel uiContainer;
 
   public JMonkeyContent(int width, int height) {
-    setLayout(new BorderLayout());
+    //setLayout(new BorderLayout());
     initJMonkey(width, height);
-    add(jmonkeyPanel, BorderLayout.CENTER);
+    //add(jmonkeyPanel, BorderLayout.CENTER);
     initUi();
   }
 
@@ -33,7 +33,7 @@ public class JMonkeyContent extends JPanel {
     uiContainer.add(Box.createHorizontalGlue());
     JPanel anotherPanel = new JPanel();
     anotherPanel.add(uiContainer);
-    add(anotherPanel, BorderLayout.EAST);
+    //add(anotherPanel, BorderLayout.EAST);
   }
 
   private void initJMonkey(int width, int height) {
@@ -64,7 +64,7 @@ public class JMonkeyContent extends JPanel {
         e.printStackTrace();
       }
     }
-    app.enqueue(() -> app.getFlyByCamera().setDragToRotate(true));
+
 
     // Extract canvas and add to Swing UI
     Dimension dim = new Dimension(width, height);
