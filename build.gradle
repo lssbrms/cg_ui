@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'antlr'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 repositories {
@@ -9,6 +10,11 @@ repositories {
     maven {
         url "https://mvnrepository.com/artifact/org.jmonkeyengine"
     }
+}
+
+javafx {
+    version = "14"
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 test {
@@ -32,7 +38,7 @@ sourceSets {
     }
 }
 
-def jme3 = [v: '3.4.0-stable', g: 'org.jmonkeyengine']
+def jme3 = [v: '3.5.1-stable', g: 'org.jmonkeyengine']
 
 dependencies {
     antlr 'org.antlr:antlr4:4.9.3'
@@ -42,7 +48,7 @@ dependencies {
     implementation "${jme3.g}:jme3-effects:${jme3.v}"
     implementation "${jme3.g}:jme3-desktop:${jme3.v}"
     runtimeOnly "${jme3.g}:jme3-plugins:${jme3.v}"
-    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
+    implementation "${jme3.g}:jme3-lwjgl3:${jme3.v}"
 
     // Utils
     implementation 'org.apache.commons:commons-lang3:3.12.0'              // general
