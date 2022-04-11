@@ -32,7 +32,7 @@ sourceSets {
     }
 }
 
-def jme3 = [v: '3.4.0-stable', g: 'org.jmonkeyengine']
+def jme3 = [v: '3.5.1-stable', g: 'org.jmonkeyengine']
 
 dependencies {
     antlr 'org.antlr:antlr4:4.9.3'
