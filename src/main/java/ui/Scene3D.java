@@ -8,12 +8,9 @@ package ui;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.light.Light;
-import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.ViewPort;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
-import misc.Observable;
 import shape3d.Ray3D;
 import com.jme3.asset.AssetManager;
 import com.jme3.math.Ray;
@@ -26,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This scene class is used to represent the scene conent.
+ * This scene class is used to represent the scene content.
  */
 public abstract class Scene3D {
 
@@ -138,7 +135,7 @@ public abstract class Scene3D {
     rootNode.addLight(sun);
 
     AmbientLight ambientLight = new AmbientLight();
-    ColorRGBA darkAmbientColor = ColorRGBA.LightGray;
+    ColorRGBA darkAmbientColor = ColorRGBA.DarkGray;
     ambientLight.setColor(darkAmbientColor);
     rootNode.addLight(ambientLight);
   }
