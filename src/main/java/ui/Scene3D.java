@@ -38,8 +38,20 @@ public abstract class Scene3D {
    */
   private List<Runnable> runLaterTasks;
 
+  /**
+   * This flag indicates that the scene wants to set the new camera controller in newCameraController
+   */
+  private boolean hasNewCameraController;
+
+  /**
+   * This camera controller wants to be used by the jme app.
+   */
+  private AbstractCameraController newCameraController;
+
   public Scene3D() {
     runLaterTasks = new ArrayList<>();
+    hasNewCameraController = false;
+    newCameraController = null;
   }
 
   /**
@@ -121,10 +133,10 @@ public abstract class Scene3D {
    */
   public void setupLights(Node rootNode, ViewPort viewPort) {
     // Clear lights
-    for ( Light light : rootNode.getLocalLightList()){
+    for (Light light : rootNode.getLocalLightList()) {
       rootNode.removeLight(light);
     }
-    for ( Light light : rootNode.getWorldLightList()){
+    for (Light light : rootNode.getWorldLightList()) {
       rootNode.removeLight(light);
     }
 
@@ -145,5 +157,24 @@ public abstract class Scene3D {
    */
   public void provideJMEApp(ComputergraphicsJMEApp app) {
     // usually not required
+  }
+
+  public void setCameraController(AbstractCameraController cameraController) {
+    this.newCameraController = cameraController;
+    hasNewCameraController = true;
+  }
+
+  /**
+   * Returns the the camera controller and resets the hasNewCameraController flag.
+   */
+  public AbstractCameraController getAndResetNewCameraController() {
+    hasNewCameraController = false;
+    AbstractCameraController cameraController = newCameraController;
+    newCameraController = null;
+    return cameraController;
+  }
+
+  public boolean hasNewCameraController() {
+    return hasNewCameraController;
   }
 }

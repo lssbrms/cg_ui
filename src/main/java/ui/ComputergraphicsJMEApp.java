@@ -5,6 +5,7 @@
 
 package ui;
 
+import misc.Logger;
 import shape3d.Ray3D;
 import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
@@ -204,13 +205,13 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
     if (scene != null) {
       scene.invokeRunlaterTasks();
       scene.update(tpf);
-//    if (scene.hasNewCameraController()) {
-//      ObserverCameraController cameraController = scene.getCameraController(cam);
-//      if (cameraController != null) {
-//        Logger.getInstance().msg("Switched to camera controller " + cameraController);
-//        this.cameraController = cameraController;
-//      }
-//    }
+      if (scene.hasNewCameraController()) {
+        AbstractCameraController cameraController = scene.getAndResetNewCameraController();
+        if (cameraController != null) {
+          Logger.getInstance().msg("Switched to camera controller " + cameraController);
+          this.cameraController = cameraController;
+        }
+      }
     }
     cameraController.update();
   }
