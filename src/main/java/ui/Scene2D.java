@@ -253,4 +253,8 @@ public abstract class Scene2D extends JPanel {
   public Vector2f getUR() {
     return ur;
   }
+
+  public void handleKey(String keyId) {
+    // Default: ignore
+  }
 }
