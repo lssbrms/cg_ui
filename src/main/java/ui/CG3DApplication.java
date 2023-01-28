@@ -10,8 +10,9 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import misc.Logger;
 import shape3d.Ray3D;
+
+import java.sql.SQLOutput;
 
 /**
  * JME application to handle a 3D scene.
@@ -56,7 +57,7 @@ public class CG3DApplication extends SimpleApplication {
             if (scene3D.hasNewCameraController()) {
                 AbstractCameraController cameraController = scene3D.getAndResetNewCameraController();
                 if (cameraController != null) {
-                    Logger.getInstance().msg("Switched to camera controller " + cameraController);
+                    System.out.println("Switched to camera controller " + cameraController);
                     this.cameraController = cameraController;
                 }
             }

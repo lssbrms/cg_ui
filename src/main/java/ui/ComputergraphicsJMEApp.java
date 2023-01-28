@@ -5,25 +5,17 @@
 
 package ui;
 
-import misc.Logger;
 import shape3d.Ray3D;
 import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
-import com.jme3.asset.AssetManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.*;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Node;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
 
 /**
  * This is the main application which is used for all exercises. Only adjust the
@@ -76,6 +68,7 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
       scene.setupLights(rootNode, viewPort);
       viewPort.setBackgroundColor(backgroundColor);
       this.scene = scene;
+      System.err.println("scene replaced");
     };
   }
 
@@ -205,13 +198,13 @@ public class ComputergraphicsJMEApp extends SimpleApplication {
     if (scene != null) {
       scene.invokeRunlaterTasks();
       scene.update(tpf);
-      if (scene.hasNewCameraController()) {
-        AbstractCameraController cameraController = scene.getAndResetNewCameraController();
-        if (cameraController != null) {
-          Logger.getInstance().msg("Switched to camera controller " + cameraController);
-          this.cameraController = cameraController;
-        }
-      }
+//    if (scene.hasNewCameraController()) {
+//      ObserverCameraController cameraController = scene.getCameraController(cam);
+//      if (cameraController != null) {
+//        Logger.getInstance().msg("Switched to camera controller " + cameraController);
+//        this.cameraController = cameraController;
+//      }
+//    }
     }
     cameraController.update();
   }
