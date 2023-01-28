@@ -1,5 +1,6 @@
 package ui;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -35,7 +36,14 @@ public abstract class CG2DApplication extends JFrame implements KeyListener {
      * Add a scene.
      */
     protected void addScene2D(Scene2D scene) {
-        tabbedPane.addTab(scene.getTitle(), scene);
+        JPanel scenePanel = new JPanel();
+        scenePanel.setLayout(new BorderLayout());
+        scenePanel.add(scene, BorderLayout.CENTER);
+        JPanel ui = scene.getUserInterface();
+        if ( ui != null){
+            scenePanel.add(ui, BorderLayout.EAST);
+        }
+        tabbedPane.addTab(scene.getTitle(), scenePanel);
         scenes.add(scene);
     }
 

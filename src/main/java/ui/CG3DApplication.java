@@ -28,7 +28,7 @@ public class CG3DApplication extends SimpleApplication {
      */
     private AbstractCameraController cameraController;
 
-    private ColorRGBA backgroundColor = ColorRGBA.LightGray;
+    private final ColorRGBA backgroundColor = ColorRGBA.LightGray;
 
     private Runnable jMonkeyTask;
 
@@ -127,15 +127,15 @@ public class CG3DApplication extends SimpleApplication {
         inputManager.addMapping(KEY_A, new KeyTrigger(KeyInput.KEY_A));
         inputManager.addMapping(KEY_B, new KeyTrigger(KeyInput.KEY_B));
         inputManager.addMapping(KEY_C, new KeyTrigger(KeyInput.KEY_C));
+        inputManager.addMapping(KEY_R, new KeyTrigger(KeyInput.KEY_R));
         inputManager.addMapping(KEY_S, new KeyTrigger(KeyInput.KEY_S));
         inputManager.addMapping(KEY_W, new KeyTrigger(KeyInput.KEY_W));
 
-        inputManager.addListener(analogListener, new String[]{
-                MOUSE_MOVE_RIGHT, MOUSE_MOVE_LEFT, MOUSE_MOVE_UP, MOUSE_MOVE_DOWN});
-        inputManager.addListener(actionListener, new String[]{MOUSE_LEFT_BUTTON,
+        inputManager.addListener(analogListener, MOUSE_MOVE_RIGHT, MOUSE_MOVE_LEFT, MOUSE_MOVE_UP, MOUSE_MOVE_DOWN);
+        inputManager.addListener(actionListener, MOUSE_LEFT_BUTTON,
                 MOUSE_RIGHT_BUTTON, PICKING, KEY_SPACE, KEY_LEFT, KEY_RIGHT,
                 KEY_UP, KEY_DOWN, KEY_1, KEY_2, KEY_3, KEY_4, KEY_A, KEY_B, KEY_C,
-                KEY_S, KEY_W});
+                KEY_R, KEY_S, KEY_W);
     }
 
     public static final String MOUSE_MOVE_RIGHT = "MOUSE_MOVE_RIGHT";
@@ -151,6 +151,7 @@ public class CG3DApplication extends SimpleApplication {
     public static final String KEY_UP = "KEY_UP";
     public static final String KEY_DOWN = "KEY_DOWN";
     public static final String KEY_W = "KEY_W";
+    public static final String KEY_R = "KEY_R";
     public static final String KEY_S = "KEY_S";
     public static final String KEY_A = "KEY_A";
     public static final String KEY_B = "KEY_B";
@@ -163,7 +164,7 @@ public class CG3DApplication extends SimpleApplication {
     /**
      * This listener is used for discrete input events.
      */
-    private ActionListener actionListener = (name, keyPressed, tpf) -> {
+    private final ActionListener actionListener = (name, keyPressed, tpf) -> {
         switch (name) {
             case MOUSE_LEFT_BUTTON -> {
                 mouseLeftPressed = keyPressed;
@@ -172,7 +173,7 @@ public class CG3DApplication extends SimpleApplication {
                 mouseRightPressed = keyPressed;
             }
             case PICKING -> {
-                if (!keyPressed) {
+                if (!keyPressed && scene3D != null) {
                     Vector2f click2d = inputManager.getCursorPosition().clone();
                     Vector3f click3d = cam.getWorldCoordinates(
                             click2d, 0f).clone();
@@ -182,18 +183,19 @@ public class CG3DApplication extends SimpleApplication {
                 }
             }
             case KEY_SPACE, KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, KEY_1, KEY_2,
-                    KEY_3, KEY_4, KEY_A, KEY_B, KEY_C, KEY_S, KEY_W -> {
+                    KEY_3, KEY_4, KEY_A, KEY_B, KEY_C, KEY_R, KEY_S, KEY_W -> {
                 if (!keyPressed) {
                     scene3D.handleKey(name);
                 }
             }
+            default -> System.out.println("Unhadled");
         }
     };
 
     /**
      * This listener is used for continuous input events.
      */
-    private AnalogListener analogListener = (name, value, tpf) -> {
+    private final AnalogListener analogListener = (name, value, tpf) -> {
         float rotateFactor = 200.0f;
         float zoomFactor = 800.0f;
 
