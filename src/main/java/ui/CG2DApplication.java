@@ -1,11 +1,7 @@
 package ui;
-<<<<<<< HEAD
-import javax.swing.*;
-import java.awt.*;
-=======
 
 import javax.swing.*;
->>>>>>> 034ae8b7745df6b6aceeec37609833c464d69428
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -41,7 +37,6 @@ public abstract class CG2DApplication extends JFrame implements KeyListener {
      * Add a scene.
      */
     protected void addScene2D(Scene2D scene) {
-<<<<<<< HEAD
         JPanel scenePanel = new JPanel();
         scenePanel.setLayout(new BorderLayout());
         scenePanel.add(scene, BorderLayout.CENTER);
@@ -50,9 +45,6 @@ public abstract class CG2DApplication extends JFrame implements KeyListener {
             scenePanel.add(ui, BorderLayout.EAST);
         }
         tabbedPane.addTab(scene.getTitle(), scenePanel);
-=======
-        tabbedPane.addTab(scene.getTitle(), scene);
->>>>>>> 034ae8b7745df6b6aceeec37609833c464d69428
         scenes.add(scene);
     }
 
