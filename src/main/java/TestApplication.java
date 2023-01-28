@@ -12,7 +12,7 @@ import ui.GenericCGApplication;
  */
 public class TestApplication extends GenericCGApplication {
   public TestApplication() {
-    super("Test-Application");
+    super("Test-Application", null);
     addScene2D(new TestScene2D(600, 600));
     setScene3D(new TestScene3D());
     addScene2D(new TestScene2D(600, 600));
