@@ -1,24 +1,17 @@
 plugins {
     id 'java'
-    id 'antlr'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://mvnrepository.com/artifact/org.jmonkeyengine"
-    }
-}
-
-javafx {
-    version = "14"
-    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 sourceSets {
@@ -38,25 +31,23 @@ sourceSets {
     }
 }
 
-def jme3 = [v: '3.5.1-stable', g: 'org.jmonkeyengine']
+def jme3 = [v: '3.5.2-stable', g: 'org.jmonkeyengine']
 
 dependencies {
-    antlr 'org.antlr:antlr4:4.9.3'
-
     // JME
     implementation "${jme3.g}:jme3-core:${jme3.v}"
     implementation "${jme3.g}:jme3-effects:${jme3.v}"
+    implementation "${jme3.g}:jme3-plugins:${jme3.v}"
     implementation "${jme3.g}:jme3-desktop:${jme3.v}"
-    runtimeOnly "${jme3.g}:jme3-plugins:${jme3.v}"
     implementation "${jme3.g}:jme3-lwjgl3:${jme3.v}"
+    implementation "${jme3.g}:jme3-jogg:${jme3.v}"
 
     // Utils
-    implementation 'org.apache.commons:commons-lang3:3.12.0'              // general
-    implementation 'com.google.guava:guava:31.0.1-jre'                    // general
-    implementation 'org.reflections:reflections:0.10.2'                   // reflection
-    implementation 'org.jetbrains:annotations:22.0.0'                     // static analysis
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'   // JSON data binding
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.json:json:20220320'
+    implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'com.google.guava:guava:31.1-jre'
 
     // Testing
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 }
