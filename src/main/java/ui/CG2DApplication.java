@@ -14,9 +14,9 @@ import static ui.CG3DApplication.KEY_1;
  */
 public abstract class CG2DApplication extends JFrame implements KeyListener {
 
-    private JTabbedPane tabbedPane;
+    private final JTabbedPane tabbedPane;
 
-    private List<Scene2D> scenes;
+    private final List<Scene2D> scenes;
 
     public CG2DApplication(String title) {
         scenes = new ArrayList<>();
@@ -46,6 +46,13 @@ public abstract class CG2DApplication extends JFrame implements KeyListener {
         }
         tabbedPane.addTab(scene.getTitle(), scenePanel);
         scenes.add(scene);
+    }
+
+    protected void addPanel(JPanel panel, String title) {
+        JPanel scenePanel = new JPanel();
+        scenePanel.setLayout(new BorderLayout());
+        scenePanel.add(panel, BorderLayout.CENTER);
+        tabbedPane.addTab(title, scenePanel);
     }
 
     @Override
