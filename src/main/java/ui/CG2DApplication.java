@@ -31,6 +31,9 @@ public abstract class CG2DApplication extends JFrame implements KeyListener {
 
         tabbedPane = new JTabbedPane();
         getContentPane().add(tabbedPane);
+		
+		//Terminate programm on window close
+	    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     /**
