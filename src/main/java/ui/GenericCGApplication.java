@@ -8,6 +8,7 @@ package ui;
 import base.ModelViewer;
 import base.ParameterEditor;
 import com.google.common.base.Preconditions;
+import com.jme3.system.AppSettings;
 import misc.Logger;
 
 import javax.swing.*;
@@ -37,10 +38,21 @@ public class GenericCGApplication {
     public GenericCGApplication(String title, int width, int height, Scene3D scene3D) {
         this.app = new ComputergraphicsJMEApp();
         this.defaultContentIsInUse = false;
-        //this.computergraphicsWidget = new ComputergraphicsWidget(title, width, height);
+        this.computergraphicsWidget = new ComputergraphicsWidget(title, width, height);
         if (scene3D != null) {
             this.app.enqueue(() -> init3D(scene3D));
         }
+
+        AppSettings appSettings = new AppSettings(true);
+        appSettings.setTitle("Generic CG Application");
+        appSettings.setResolution(800, 600);
+        appSettings.setFullscreen(false);
+        appSettings.setAudioRenderer(null);
+        app.setSettings(appSettings);
+        app.setShowSettings(false);
+        app.setDisplayStatView(false);
+        app.setShowSettings(false);
+
         this.app.start();
     }
 
@@ -66,12 +78,12 @@ public class GenericCGApplication {
         }
 
         // TODO: Update ui
-    /*
-    getContentPane().invalidate();
-    for (StatusBar.StatusBarItem statusBarItem : scene3D.getStatusBarItems()) {
-      statusBar.add(statusBarItem);
-    }
-    */
+        /*
+        getContentPane().invalidate();
+        for (StatusBar.StatusBarItem statusBarItem : scene3D.getStatusBarItems()) {
+            statusBar.add(statusBarItem);
+        }
+        */
     }
 
     protected void addScene3D(Scene3D scene3D) {

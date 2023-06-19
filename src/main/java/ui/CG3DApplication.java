@@ -12,8 +12,6 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import shape3d.Ray3D;
 
-import java.sql.SQLOutput;
-
 /**
  * JME application to handle a 3D scene.
  */
@@ -35,6 +33,10 @@ public class CG3DApplication extends SimpleApplication {
 
     private boolean sceneIsInitialized = false;
 
+    public CG3DApplication(String title) {
+        System.out.println(title);
+    }
+
     public CG3DApplication() {
     }
 
@@ -43,6 +45,7 @@ public class CG3DApplication extends SimpleApplication {
         sceneIsInitialized = false;
     }
 
+    @Override
     public void simpleInitApp() {
         setupInput();
         setDisplayFps(false);
@@ -50,6 +53,7 @@ public class CG3DApplication extends SimpleApplication {
         viewPort.setBackgroundColor(backgroundColor);
     }
 
+    @Override
     public void simpleUpdate(float tpf) {
         if (scene3D != null && sceneIsInitialized) {
             scene3D.invokeRunlaterTasks();
@@ -65,6 +69,7 @@ public class CG3DApplication extends SimpleApplication {
         }
     }
 
+    @Override
     public void simpleRender(RenderManager rm) {
         if (jMonkeyTask != null) {
             jMonkeyTask.run();
