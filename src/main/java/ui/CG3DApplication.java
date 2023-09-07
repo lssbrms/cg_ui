@@ -34,10 +34,12 @@ public class CG3DApplication extends SimpleApplication {
     private boolean sceneIsInitialized = false;
 
     public CG3DApplication(String title) {
-        System.out.println(title);
+        // Default scene - should be replaced later
+        setScene3D(new SimpleScene3D());
     }
 
     public CG3DApplication() {
+        this("");
     }
 
     protected void setScene3D(Scene3D scene3D) {
@@ -51,6 +53,8 @@ public class CG3DApplication extends SimpleApplication {
         setDisplayFps(false);
         setDisplayStatView(false);
         viewPort.setBackgroundColor(backgroundColor);
+
+
     }
 
     @Override
