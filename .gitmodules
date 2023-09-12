@@ -1,3 +1,3 @@
-[submodule "cg_math"]
+[submodule "cgmath"]
 	path = cgmath
-	url = ../cgmath.git
+	url = https://git.haw-hamburg.de/Philipp.Jenke/cgmath
