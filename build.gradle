@@ -17,16 +17,16 @@ test {
 sourceSets {
     main {
         java {
-            srcDirs 'cg_math/src/main/java'
+            srcDirs 'cgmath/src/main/java'
         }
         resources {
-            srcDir 'cg_math/src/main/resources'
+            srcDir 'cgmath/src/main/resources'
         }
     }
 
     test {
         java {
-            srcDirs 'cg_math/src/test/java'
+            srcDirs 'cgmath/src/test/java'
         }
     }
 }
@@ -47,6 +47,7 @@ dependencies {
     implementation 'org.json:json:20220320'
     implementation 'org.jetbrains:annotations:23.0.0'
     implementation 'com.google.guava:guava:31.1-jre'
+    implementation group: 'gov.nist.math', name: 'jama', version: '1.0.3'
 
     // Testing
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
